@@ -1,5 +1,6 @@
 package com.picpaysimplificado.domains.user;
 
+import com.picpaysimplificado.dtos.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -37,4 +38,12 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
+
+    public User(UserDTO userDTO) {
+        this.firstName = userDTO.firstName();
+        this.lastName = userDTO.lastName();
+        this.balance = userDTO.balance();
+        this.userType = userDTO.userType();
+        this.password = userDTO.password();
+    }
 }
